@@ -1,12 +1,19 @@
-%Both methods will return a 1x2 vector.
-%The first value is the slope, the second value is the y-int.
+function lslineEquation(x,y,z)
+%This function finds the equation for the line of best fit!
+%x is a vector containing the x-axis values of your data.
+%y is a vector containing the y-axis values of your data.
+%x and y must be vectors of equal size.
+%If you have lsline z must be 'yes'.
+%Anything else will conclude you do not have lsline.
+%The resulting 1x2 matrix contains the slope and y-int,
+%using slope intercept form, you can construct the equation of lsline.
+plot(x,y,'ro');
+if z == 'yes'
+    h = lsline;
+    polyfit(get(h,'xdata'),get(h,'ydata'),1)
+else
+    polyfit(x,y,1)
+end
 
-%Find the equation for lsline (line of best fit)!
-h = lsline ;
-p2 = polyfit(get(h,'xdata'),get(h,'ydata'),1)
-
-%Or find the equation of the line of best fit using the vectors involved!
-x = input('x-axis vector: ');
-y = input('y-axis vector: ');
-plot(x,y,'bo');
-p = polyfit(x,y,1) 
+%Call the function with lslineEquation(x,y,z).
+%Use specifications as outlined in the comments above.
