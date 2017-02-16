@@ -1,14 +1,17 @@
-function lslineEquation(x,y,z)
-%This function finds the equation for the line of best fit!
-%x and y must be vectors of equal size.
-%If you have lsline, z must be 'yes'.
-%Anything else will conclude you do not have lsline.
-plot(x,y,'ro');
-if z == 'yes'
-    h = lsline;
-    polyfit(get(h,'xdata'),get(h,'ydata'),1)
-else
-    polyfit(x,y,1)
+function linevalues(val,m,b,vector)
+%This function finds the y-axis values for a line
+%where you know the x-axis values you want.
+%Use this function if you know the expected number of values.
+%The code creates a vector of zeros and replaces them.
+%val is the expected number of values.
+%m is the slope of the line.
+%b is the y-int. of the line.
+%vector is the vector holding the desired x-axis values.
+A = zeros(1,val);
+x = 1;
+while x < (val+1)
+    A(x) = (m*vector(x) + b);
+    x = x + 1;
 end
 
 %c=Call the function with lslineEquation(x,y,z) in command line or elsewhere. 
