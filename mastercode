@@ -1,0 +1,80 @@
+%{
+This code requires 2 or 3 vectors of equal size with your data.
+Two vectors will be compared (the y-axis values) and the points above the line of best fit marked.
+One of these two vectors you will provide; the other will be calculated from the line of best fit.
+The second you must provide is the one that connects the two being compared (the x-axis values).
+The potential third vector is a vector of strings for labeling the points.
+If labeling is not desired, comment out or delete the code on line 64 and 66.
+%}
+
+%Fill in data here for x-axis, y-axis, and potential point labels.
+%Keep in mind that all three must be the same size (data must match up).
+x = []
+y = []
+names = ['']
+
+%This plots the data.
+plot(x,y,'or')
+hold on
+
+%Uncomment below to label all points in black.
+%Leave commented to label points only above line of best fit.
+%labelpoints(x,y,names,'NW',0.15,1)
+
+%This creates the line of best fit.
+%If stats toolbox is not available, there is information on the internet for getting a line of best fit using polyfit.
+lsline
+
+%{
+The "A" in the code below is a vector with the points on lsline corresponding with x-axis values of the y vector 
+(in other words, the corresponding x vector values).
+"A" is needed in order to find if the points of rating are above the line of best fit.
+Later (not here), the x-axis values will be matched up and the y-axis values compared.
+%}
+%{
+The code below creates a vector of zeros and prompts you for the slope and y int. of the line of best fit.
+You can find that information in the "lsline equation" file of this repository.
+It will also prompt you for the expected number of values you wish to include.
+The number you enter should be the number corresponding to the place of the last x vector value you want.
+This means it is possible to disclude values from the end, but not from the beginning or middle of the vector.
+%}
+val = input('expected number of values: ');
+A = zeros(1,val);
+x = 1;
+m = input('slope: ');
+b = input('y int.: ');
+vector = input('vector for matching values: ');
+%The below while loop replaces the zeros with the desired y values of the line.
+%These values correspond to the matching x-axis values of your y vector, allowing future comparison.
+while x < (val + 1)
+    A(x) = (m*vector(x) + b);
+    x = x + 1;
+end
+
+%{
+The code below marks the points above the line of best fit with an 'x' and
+labels them with the strings from the 'names' vector.
+The labels will appear red in the upper lefthand corner.
+%}
+p = 1;
+while p < (val + 1)
+    if y(p) > A(p)
+        xUp = x(p);
+        yUp = y(p);
+        namesUp = names(p);
+        plot(xUp,yUp,'gx')
+        labelpoints(xUp,yUp,namesUp,'NW',0.15,1,'Color','r')
+        hold on
+    end
+    p = p + 1;
+end
+%{
+While loop explanation (if interested):
+Inside the while loop is an if statement that compares the two vectors mentioned at the top comment.
+The if statement starts from position 1 in the vectors.
+If the y vector value in the corresponding position 'p' is larger than the y value of the 'A' vector,
+the if statement plots it with a green x using its corresponding position from the x vector (xUp and yUp).
+The if statement starts over, but at the next position (p + 1), 
+continuing until it reaches the expected number of values that was previously entered (val).
+This leaves you with a graph of red circles, some of which lie above the line of best fit and are specified with a green 'x.' 
+%}
