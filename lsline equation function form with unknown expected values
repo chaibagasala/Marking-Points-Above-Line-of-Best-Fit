@@ -1,0 +1,17 @@
+function linevaluesUK(m,b,vector)
+%This function finds the y-axis values for a line
+%where you know the x-axis values you want.
+%Use this function if you don't know the expected number of values.
+%The code creates an empty vector and appends values to it.
+%m is the slope of the line.
+%b is the y-int. of the line.
+%vector is the vector holding the desired x-axis values.
+A = [];
+x = 1;
+while x < 29
+    A = [A (m*vector(x) + b)];
+    x = x + 1;
+end
+
+%call the function with linevaluesUK(m,b,vector)
+%use the specifications in the comment above
