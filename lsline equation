@@ -1,0 +1,12 @@
+%Both methods will return a 1x2 vector.
+%The first value is the slope, the second value is the y-int.
+
+%Find the equation for lsline (line of best fit)!
+h = lsline ;
+p2 = polyfit(get(h,'xdata'),get(h,'ydata'),1)
+
+%Or find the equation of the line of best fit using the vectors involved!
+x = input('x-axis vector: ');
+y = input('y-axis vector: ');
+plot(x,y,'bo');
+p = polyfit(x,y,1) 
