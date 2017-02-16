@@ -14,7 +14,7 @@ y = []
 names = ['']
 
 %This plots the data.
-plot(x,y,'or')
+plot(x,y,'ok')
 hold on
 
 %Uncomment below to label all points in black.
