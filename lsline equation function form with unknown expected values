@@ -13,5 +13,5 @@ while x < 29
     x = x + 1;
 end
 
-%Call the function with linevaluesUK(x,y,z) in command line or elsewhere. 
+%Call the function with linevaluesUK(m,b,vector) in command line or elsewhere. 
 %Use the specifications as outlined in the comments above.
