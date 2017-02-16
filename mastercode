@@ -40,15 +40,15 @@ This means it is possible to disclude values from the end, but not from the begi
 %}
 val = input('expected number of values: ');
 A = zeros(1,val);
-x = 1;
+k = 1;
 m = input('slope: ');
 b = input('y int.: ');
 vector = input('vector for matching values: ');
 %The below while loop replaces the zeros with the desired y values of the line.
 %These values correspond to the matching x-axis values of your y vector, allowing future comparison.
-while x < (val + 1)
-    A(x) = (m*vector(x) + b);
-    x = x + 1;
+while k < (val + 1)
+    A(k) = (m*vector(k) + b);
+    k = k + 1;
 end
 
 %{
