@@ -14,5 +14,5 @@ while x < (val+1)
     x = x + 1;
 end
 
-%Call the function with lslineEquation(x,y,z) in command line or elsewhere. 
+%Call the function with linevalues(val,m,b,vector) in command line or elsewhere. 
 %Use the specifications as outlined in the comments above.
