@@ -52,6 +52,7 @@ while x < (val + 1)
 end
 
 %{
+COMPARISON
 The code below marks the points above the line of best fit with an 'x' and
 labels them with the strings from the 'names' vector.
 The labels will appear red in the upper lefthand corner.
