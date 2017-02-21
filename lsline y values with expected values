@@ -1,15 +1,14 @@
-function linevalues(val,m,b,vector)
+function linevalues(m,b,vector)
 %This function finds the y-axis values for a line
 %where you know the x-axis values you want.
-%Use this function if you know the expected number of values.
 %The code creates a vector of zeros and replaces them.
-%val is the expected number of values.
 %m is the slope of the line.
 %b is the y-int. of the line.
 %vector is the vector holding the desired x-axis values.
-A = zeros(1,val);
+num = numel(vector);
+A = zeros(1,num);
 x = 1;
-while x < (val+1)
+while x < (num+1)
     A(x) = (m*vector(x) + b);
     x = x + 1;
 end
