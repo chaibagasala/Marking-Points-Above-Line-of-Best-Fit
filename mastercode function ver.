@@ -1,0 +1,61 @@
+function points(x,y,names,m,b,vector,ab)
+%x and y should be vectors of equal size containing the data.
+%names should be a vector of equal size of x and y containing labels
+%If labels are not desired, input 0.
+%m and b are the slope and y-int. of the line of best fit.
+%vector is the vector of x-axis values to be used for comparison.
+%It is most likely the same vector as 'x'
+%ab is either 'above' 'below' or 'both'.
+%This indicates what points you would like marked: 
+%above/below line of best fit, or both.
+num = numel(vector);
+plot(x,y,'ok')
+hold on
+lsline
+A = zeros(1,num);
+k = 1;
+while k < (num + 1)
+    A(k) = (m*vector(k) + b);
+    k = k + 1;
+end
+p = 1;
+while p < (num + 1)
+    if strcmpi('above',ab) == 1
+        if y(p) > A(p)
+            xUp = x(p);
+            yUp = y(p);
+            namesUp = names(p);
+            plot(xUp,yUp,'gx')
+            labelpoints(xUp,yUp,namesUp,'NW',0.15,1,'Color','g')
+            hold on
+        end
+        p = p + 1;
+    elseif strcmpi('below',ab) == 1
+        if y(p) < A(p)
+            xUp = x(p);
+            yUp = y(p);
+            namesUp = names(p);
+            plot(xUp,yUp,'rx')
+            labelpoints(xUp,yUp,namesUp,'SE',0.15,1,'Color','r')
+            hold on
+        end
+        p = p + 1;
+    elseif strcmpi('both',ab) == 1
+        if y(p) > A(p)
+            xUp = x(p);
+            yUp = y(p);
+            namesUp = names(p);
+            plot(xUp,yUp,'gx')
+            labelpoints(xUp,yUp,namesUp,'NW',0.15,1,'Color','g')
+            hold on
+        elseif y(p) < A(p)
+            xUp = x(p);
+            yUp = y(p);
+            namesUp = names(p);
+            plot(xUp,yUp,'rx')
+            labelpoints(xUp,yUp,namesUp,'SE',0.15,1,'Color','r')
+            hold on
+        end
+        p = p + 1;
+    end
+end
